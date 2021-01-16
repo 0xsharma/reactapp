@@ -3,17 +3,20 @@ pipeline {
     stages {
         stage('build') { 
             steps {
-                echo 'building the application...'
+                echo 'Node Modules Installation...'
+                bat 'npm install'
             }
         }
         stage('test') { 
             steps {
-                echo 'testing the application...'
+                echo 'Building App..'
+                bat 'npm run build'
             }
         }
         stage('deploy') { 
             steps {
-                echo 'deploying the application...' 
+                echo 'Deploy on Apache'
+                bat "xcopy /s build C:\\Apache24\\htdocs"
             }
         }
     }
