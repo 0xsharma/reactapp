@@ -10,7 +10,7 @@ pipeline {
         stage('test') { 
             steps {
                 echo 'Building App..'
-                bat 'set "REACT_APP_NOT_SECRET_CODE=abcdef" && npm start'
+                bat 'set "REACT_APP_TESTVAR=abcdef" && npm run build'
             }
         }
         stage('deploy') { 
