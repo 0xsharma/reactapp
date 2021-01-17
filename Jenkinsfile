@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo 'Docker Config'
                 bat "docker pull httpd"
-                bat "docker build -t reactapp"
+                bat "docker build -t reactapp ."
                 bat "docker run --name dockerreact -p 5000:80 reactapp"
             }
         }
