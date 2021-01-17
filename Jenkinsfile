@@ -10,13 +10,15 @@ pipeline {
         stage('test') { 
             steps {
                 echo 'Building App..'
-                bat 'npm run build'
+                bat '($env:REACT_APP_TESTVAR = "abcdef") -and (npm run build)'
             }
         }
         stage('deploy') { 
             steps {
-                echo 'Deploy on Apache'
-                bat "xcopy /s build C:\\Apache24\\htdocs"
+                echo 'Docker Config'
+                bat "docker pull httpd"
+                bat "docker build -t reactapp"
+                bat "docker run --name dockerreact -p 5000:80 reactapp"
             }
         }
     }

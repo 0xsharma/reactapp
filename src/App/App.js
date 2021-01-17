@@ -4,6 +4,9 @@ import SideMenu from "../components/SideMenu";
 import Header from "../components/Header";
 import './App.css';
 import AppMain from "../components/AppMain";
+require('dotenv').config()
+
+
 
 const useStyles = makeStyles({
   AppRight:{
@@ -15,10 +18,12 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const envvar = process.env.REACT_APP_TESTVAR
+  
 
   return (
     <>
-        
+        {envvar}
         <SideMenu />
         <div className={classes.AppRight}>
           <Header />
